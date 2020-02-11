@@ -9,8 +9,6 @@ parameters:
 
 - name: CLOUDSDK_COMPUTE_ZONE
 
-- name: GOOGLE_APPLICATION_CREDENTIALS
-
 - name: CLOUDSDK_CONTAINER_CLUSTER
   default: ""
 
