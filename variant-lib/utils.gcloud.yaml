@@ -12,6 +12,8 @@ parameters:
 - name: CLOUDSDK_CONTAINER_CLUSTER
   default: ""
 
+- name: TOOLBOX_GCP_KEY_FILE
+
 tasks:
   auth:
     tasks:
@@ -26,7 +28,7 @@ tasks:
             title: "Google Cloud :: Set project & activate service account"
             cmd: |
               gcloud config set project {{ .CLOUDSDK_CORE_PROJECT }}
-              gcloud auth activate-service-account --key-file={{ .key_file }}
+              gcloud auth activate-service-account --key-file={{ .TOOLBOX_GCP_KEY_FILE }}
 
   container:
     tasks:
