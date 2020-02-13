@@ -1,18 +1,25 @@
 #!/usr/bin/env variant
 # vi: ft=yaml
 
-# bindParamsFromEnv: true
+bindParamsFromEnv: true
 autoenv: true
 
 parameters:
-- name: CLOUDSDK_CORE_PROJECT
-
-- name: CLOUDSDK_COMPUTE_ZONE
-
-- name: CLOUDSDK_CONTAINER_CLUSTER
-  default: ""
+  - name: CLOUDSDK_CORE_PROJECT
+  - name: CLOUDSDK_COMPUTE_ZONE
+  - name: CLOUDSDK_CONTAINER_CLUSTER
+  - name: TOOLBOX_GCP_KEY_FILE
 
 tasks:
   core:
     import: toolbox/.toolbox/deps/toolbox/variant-lib/utils.yaml
-  import: toolbox/.toolbox/deps/toolbox-gcp/variant-lib/utils.gcloud.yaml
+  cloud:
+    tasks:
+      gcp:
+        tasks:
+          gcloud:
+            import: toolbox/.toolbox/deps/toolbox-gcp/variant-lib/utils.gcloud.yaml
+
+  prepare:
+    steps:
+      - task: cloud.gcp.gcloud.init

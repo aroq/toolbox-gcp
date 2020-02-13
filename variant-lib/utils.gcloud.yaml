@@ -1,26 +1,15 @@
 #!/usr/bin/env variant
 # vi: ft=yaml
 
-# bindParamsFromEnv: true
-autoenv: true
-
-parameters:
-- name: CLOUDSDK_CORE_PROJECT
-
-- name: CLOUDSDK_COMPUTE_ZONE
-
-- name: CLOUDSDK_CONTAINER_CLUSTER
-  default: ""
-
-- name: TOOLBOX_GCP_KEY_FILE
-
 tasks:
+  init:
+    steps:
+      - task: cloud.gcp.gcloud.auth.activate-service-account
+      - task: cloud.gcp.gcloud.container.clusters.get-credentials
+
   auth:
     tasks:
       activate-service-account:
-        parameters:
-        - name: key_file
-          type: string
         autoenv: true
         steps:
         - task: core.exec
@@ -36,9 +25,11 @@ tasks:
         autoenv: true
         tasks:
           get-credentials:
+            autoenv: true
             steps:
             - task: core.exec
               arguments:
                 title: "Google Cloud :: Cluster :: Get credentials"
                 cmd: |
                   gcloud container clusters get-credentials {{ .CLOUDSDK_CONTAINER_CLUSTER }}
+
