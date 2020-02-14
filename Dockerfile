@@ -1,4 +1,4 @@
-FROM aroq/toolbox-cloud:0.1.4
+FROM aroq/toolbox-cloud:0.1.5
 
 RUN mkdir -p /toolbox-gcp
 ADD tools /toolbox-gcp/tools
