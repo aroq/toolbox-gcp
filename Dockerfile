@@ -1,5 +1,7 @@
 FROM aroq/toolbox-cloud:0.1.4
 
-COPY entrypoint.sh /entrypoint.sh
+RUN mkdir -p /toolbox-gcp
+ADD tools /toolbox-gcp/tools
+ADD variant-lib /toolbox-gcp/variant-lib
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/toolbox-gcp/tools/gcp"]
