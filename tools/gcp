@@ -9,8 +9,9 @@ parameters:
   - name: CLOUDSDK_COMPUTE_ZONE
   - name: CLOUDSDK_CONTAINER_CLUSTER
   - name: TOOLBOX_GCP_KEY_FILE
+    default: .secrets/gcp.key.json
   - name: KUBECONFIG
-    default: ~/.kube/config
+    default: .secrets/kubeconfig
 
 tasks:
   core:
