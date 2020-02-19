@@ -2,7 +2,7 @@ config:
   tools:
     gcp:
       params:
-        image: aroq/toolbox-cloud:0.1.5
+        image: aroq/toolbox-gcp
         tool_dirs:
           - toolbox/.toolbox/deps/toolbox-gcp
 
