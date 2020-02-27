@@ -6,7 +6,7 @@ FROM google/cloud-sdk:$GCLOUD_VERSION as google-cloud-sdk
 # Main stage
 FROM aroq/toolbox
 
-COPY Dockerfile.packages.builder.txt /etc/apk/packages.txt
+COPY Dockerfile.packages.txt /etc/apk/packages.txt
 RUN apk add --no-cache --update $(grep -v '^#' /etc/apk/packages.txt)
 
 ENV CLOUDSDK_CONFIG=/localhost/.config/gcloud/
