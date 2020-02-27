@@ -6,6 +6,9 @@ FROM google/cloud-sdk:$GCLOUD_VERSION as google-cloud-sdk
 # Main stage
 FROM aroq/toolbox
 
+COPY Dockerfile.packages.builder.txt /etc/apk/packages.txt
+RUN apk add --no-cache --update $(grep -v '^#' /etc/apk/packages.txt)
+
 ENV CLOUDSDK_CONFIG=/localhost/.config/gcloud/
 COPY --from=google-cloud-sdk /google-cloud-sdk/ /usr/local/google-cloud-sdk/
 RUN ln -s /usr/local/google-cloud-sdk/bin/gcloud /usr/local/bin/ && \
