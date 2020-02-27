@@ -1,13 +1,7 @@
-config:
-  tools:
-    gcp:
-      params:
-        image: aroq/toolbox-gcp
-        tool_dirs:
-          - toolbox/.toolbox/deps/toolbox-gcp
-
 tools:
   gcp:
     from: config.tools.gcp
     cmd: gcp
-
+    image: aroq/toolbox-gcp:0.2.1
+    tool_dirs:
+      - /toolbox-gcp
