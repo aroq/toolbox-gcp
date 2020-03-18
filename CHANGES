@@ -1,3 +1,6 @@
+Version 0.2.3:
+ - Fix import
+
 Version 0.2.2:
  - Update base image to aroq/toolbox-variant:0.1.21
 
