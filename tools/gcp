@@ -21,7 +21,7 @@ tasks:
       gcp:
         tasks:
           gcloud:
-            import: /toolbox-gcp/variant-lib/utils.gcloud.yaml
+            import: /toolbox/toolbox-gcp/variant-lib/utils.gcloud.yaml
 
   prepare:
     steps:
