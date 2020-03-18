@@ -4,7 +4,7 @@ ARG GCLOUD_VERSION=266.0.0-alpine
 FROM google/cloud-sdk:$GCLOUD_VERSION as google-cloud-sdk
 
 # Main stage
-FROM aroq/toolbox
+FROM aroq/toolbox-variant:0.1.21
 
 COPY Dockerfile.packages.txt /etc/apk/packages.txt
 RUN apk add --no-cache --update $(grep -v '^#' /etc/apk/packages.txt)
