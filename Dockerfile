@@ -27,9 +27,9 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_
     kubectl completion bash > ~/completions/kubectl.bash && \
     echo "source ~/completions/kubectl.bash" >> /etc/profile
 
-RUN mkdir -p /toolbox-gcp
-ADD tools /toolbox-gcp/tools
-ADD variant-lib /toolbox-gcp/variant-lib
+RUN mkdir -p /toolbox/toolbox-gcp
+ADD tools /toolbox/toolbox-gcp/tools
+ADD variant-lib /toolbox/toolbox-gcp/variant-lib
 
 ENV TOOLBOX_TOOL_DIRS toolbox,/toolbox/toolbox-gcp
 ENV VARIANT_CONFIG_CONTEXT toolbox
