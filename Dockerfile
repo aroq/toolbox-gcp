@@ -30,5 +30,3 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_
 RUN mkdir -p /toolbox-gcp
 ADD tools /toolbox-gcp/tools
 ADD variant-lib /toolbox-gcp/variant-lib
-
-ENTRYPOINT ["/toolbox-gcp/tools/gcp"]
