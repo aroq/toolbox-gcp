@@ -1,7 +1,6 @@
 tools:
   gcp:
-    from: config.tools.gcp
-    cmd: gcp
-    image: aroq/toolbox-gcp:0.2.8
+    from: config.toolbox-variant
+    image: aroq/toolbox-gcp:0.2.9
     tool_dirs:
-      - /toolbox-gcp
+      - /toolbox/toolbox-gcp
