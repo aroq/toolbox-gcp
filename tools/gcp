@@ -16,16 +16,42 @@ parameters:
 tasks:
   core:
     import: /toolbox/toolbox-variant/variant-lib/utils.yaml
-  cloud:
-    tasks:
-      gcp:
+  commands:
+    gcloud:
+      init:
+        steps:
+          - task: commands.gcloud.auth.activate-service-account
+          - task: commands.gcloud.container.clusters.get-credentials
+
+      auth:
         tasks:
-          gcloud:
-            import: /toolbox/toolbox-gcp/variant-lib/utils.gcloud.yaml
+          activate-service-account:
+            autoenv: true
+            steps:
+            - task: core.exec
+              arguments:
+                title: "Google Cloud :: Set project & activate service account"
+                cmd: |
+                  gcloud config set project {{ .CLOUDSDK_CORE_PROJECT }}
+                  gcloud auth activate-service-account --key-file={{ .TOOLBOX_GCP_KEY_FILE }}
+
+      container:
+        tasks:
+          clusters:
+            autoenv: true
+            tasks:
+              get-credentials:
+                autoenv: true
+                steps:
+                - task: core.exec
+                  arguments:
+                    title: "Google Cloud :: Cluster :: Get credentials"
+                    cmd: |
+                      gcloud container clusters get-credentials {{ .CLOUDSDK_CONTAINER_CLUSTER }}
 
   prepare:
     steps:
-      - task: cloud.gcp.gcloud.init
+      - task: commands.gcloud.init
 
   kubeconfig:
     steps:

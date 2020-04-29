@@ -1,5 +1,5 @@
 # Define arguments & default values
-ARG GCLOUD_VERSION=266.0.0-alpine
+ARG GCLOUD_VERSION=290.0.1-alpine
 
 FROM google/cloud-sdk:$GCLOUD_VERSION as google-cloud-sdk
 
@@ -29,7 +29,6 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_
 
 RUN mkdir -p /toolbox/toolbox-gcp
 COPY tools /toolbox/toolbox-gcp/tools
-COPY variant-lib /toolbox/toolbox-gcp/variant-lib
 
 ENV TOOLBOX_TOOL_DIRS toolbox,/toolbox/toolbox-gcp
 ENV VARIANT_CONFIG_CONTEXT toolbox
