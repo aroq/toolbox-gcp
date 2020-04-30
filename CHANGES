@@ -1,3 +1,6 @@
+Version 0.3.3:
+ - Change parent image to aroq/toolbox-secrets:0.1.26
+
 Version 0.3.2:
  - Add docker-credential-gcloud into PATH
 
