@@ -31,7 +31,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_
 # Install kpt
 RUN curl -LO https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt && \
     chmod +x ./kpt && \
-    mv ./kpt /usr/local/bin/kpt && \
+    mv ./kpt /usr/local/bin/kpt
 
 RUN mkdir -p /toolbox/toolbox-gcp
 COPY tools /toolbox/toolbox-gcp/tools
