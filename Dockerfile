@@ -17,7 +17,8 @@ RUN ln -s /usr/local/google-cloud-sdk/bin/gcloud /usr/local/bin/ && \
     ln -s /usr/local/google-cloud-sdk/bin/docker-credential-gcloud /usr/local/bin/ && \
     gcloud config set core/disable_usage_reporting true --installation && \
     gcloud config set component_manager/disable_update_check true --installation && \
-    gcloud config set metrics/environment github_docker_image --installation
+    gcloud config set metrics/environment github_docker_image --installation && \
+    gcloud components install kpt && kpt version
 
 # Install kubectl
 ARG KUBECTL_VERSION=v1.18.0
