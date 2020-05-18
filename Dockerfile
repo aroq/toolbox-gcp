@@ -17,8 +17,7 @@ RUN ln -s /usr/local/google-cloud-sdk/bin/gcloud /usr/local/bin/ && \
     ln -s /usr/local/google-cloud-sdk/bin/docker-credential-gcloud /usr/local/bin/ && \
     gcloud config set core/disable_usage_reporting true --installation && \
     gcloud config set component_manager/disable_update_check true --installation && \
-    gcloud config set metrics/environment github_docker_image --installation && \
-    gcloud components install kpt && kpt version
+    gcloud config set metrics/environment github_docker_image --installation
 
 # Install kubectl
 ARG KUBECTL_VERSION=v1.18.0
@@ -28,6 +27,11 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_
     mkdir -p ~/completions && \
     kubectl completion bash > ~/completions/kubectl.bash && \
     echo "source ~/completions/kubectl.bash" >> /etc/profile
+
+# Install kpt
+RUN curl -LO https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt && \
+    chmod +x ./kpt && \
+    mv ./kpt /usr/local/bin/kpt && \
 
 RUN mkdir -p /toolbox/toolbox-gcp
 COPY tools /toolbox/toolbox-gcp/tools
