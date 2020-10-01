@@ -1,3 +1,6 @@
+Version 0.4.0:
+ - Update config to 0.4.0
+
 Version 0.3.9:
  - Use namespace when get pods on kubeconfig cmd
 
