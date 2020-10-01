@@ -1,3 +1,6 @@
+Version 0.3.9:
+ - Use namespace when get pods on kubeconfig cmd
+
 Version 0.3.8:
 
 
