@@ -54,10 +54,13 @@ tasks:
       - task: commands.gcloud.init
 
   kubeconfig:
+    parameters:
+      - name: TOOLBOX_K8S_NAMESPACE
+        default: default
     steps:
       - task: prepare
         # Need to do one query to k8s to put token into kubeconfig file.
       - task: core.exec
         arguments:
           cmd: |
-            kubectl get pods
+            kubectl get pods -n {{ .TOOLBOX_K8S_NAMESPACE }}
